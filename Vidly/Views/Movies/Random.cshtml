@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Vidly.Models.Customer>
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*
+   razer view comment section.
+    the below technique we can use to assign any attrbiues dynamically to html.
+*@
+
+@{ 
+    var classname = (Model.Customers.Count>0)? "popular": null;
+}
+
+<h2 class ="@classname"> @Model.Movie.Name</h2>
+
+
+@if (Model.Customers.Count == 0)
+{
+    //<p>No one has reneted this movie before</p>
+    <text>No one has reneted this movie before</text>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            // we can have C# code or html code here. Razer view engine knows how to parse the syntax
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
+
+
+
+ 
